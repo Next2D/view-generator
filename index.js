@@ -15,13 +15,90 @@ if (10 > version.split(".")[0]) {
 const chalk       = require("chalk");
 const commander   = require("commander");
 const packageJson = require("./package.json");
+const path        = require("path");
+const fs = require("fs-extra");
 
 /**
  * @return {void}
  */
 const createFile = function ()
 {
-    console.log("koko");
+    const cwd = `${process.cwd()}/src/`;
+
+    const routingPath = path.join(cwd, "config/routing.json");
+    if (!fs.existsSync(routingPath)) {
+        return ;
+    }
+
+    const routing = require(routingPath);
+    const keys = Object.keys(routing);
+
+    for (let idx = 0; idx < keys.length; ++idx) {
+
+        const names = keys[idx].split(/[-_/]/);
+
+        const viewDir = path.join(cwd, `view/${names[0]}`);
+        if (!fs.existsSync(viewDir)) {
+            fs.ensureDirSync(viewDir);
+        }
+
+        let name = "";
+        for (let idx = 0; names.length > idx; ++idx) {
+
+            const base = names[idx];
+
+            name += base
+                .charAt(0)
+                .toUpperCase() + base.slice(1);
+
+        }
+
+        // create View file
+        fs.writeFileSync(path.join(viewDir, `${name}View.js`), `/**
+ * @class
+ * @extends {next2d.fw.View}
+ */
+export class ${name}View extends next2d.fw.View
+{
+    /**
+     * @constructor
+     * @public
+     */
+    constructor ()
+    {
+        super();
+    }
+}`);
+
+        // create ViewModel file
+        fs.writeFileSync(path.join(viewDir, `${name}ViewModel.js`), `/**
+ * @class
+ * @extends {next2d.fw.ViewModel}
+ */
+export class ${name}ViewModel extends next2d.fw.ViewModel
+{
+    /**
+     * @param {next2d.fw.View} view
+     * @constructor
+     * @public
+     */
+    constructor (view)
+    {
+        super(view);
+    }
+
+    /**
+     * @param  {next2d.fw.View} view
+     * @return {void}
+     * @abstract
+     */
+    bind (view)
+    {
+        console.log(view);
+    }
+}`);
+
+    }
 };
 
 /**
