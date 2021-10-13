@@ -54,7 +54,9 @@ const createFile = function ()
         }
 
         // create View file
-        fs.writeFileSync(path.join(viewDir, `${name}View.js`), `/**
+        const viewFile = path.join(viewDir, `${name}View.js`);
+        if (!fs.existsSync(viewFile)) {
+            fs.writeFileSync(viewFile, `/**
  * @class
  * @extends {next2d.fw.View}
  */
@@ -69,9 +71,12 @@ export class ${name}View extends next2d.fw.View
         super();
     }
 }`);
+        }
 
         // create ViewModel file
-        fs.writeFileSync(path.join(viewDir, `${name}ViewModel.js`), `/**
+        const viewModelFile = path.join(viewDir, `${name}ViewModel.js`);
+        if (!fs.existsSync(viewModelFile)) {
+            fs.writeFileSync(viewModelFile, `/**
  * @class
  * @extends {next2d.fw.ViewModel}
  */
@@ -97,7 +102,7 @@ export class ${name}ViewModel extends next2d.fw.ViewModel
         console.log(view);
     }
 }`);
-
+        }
     }
 };
 
