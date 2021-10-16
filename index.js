@@ -23,10 +23,17 @@ const fs = require("fs-extra");
  */
 const createFile = function ()
 {
+
+    console.log();
+    console.log(`${chalk.green("Begin research.")}`);
+    console.log();
+
     const cwd = `${process.cwd()}/src/`;
 
     const routingPath = path.join(cwd, "config/routing.json");
     if (!fs.existsSync(routingPath)) {
+        console.log(`${chalk.red("Could not find routing.json.")}`);
+        console.log();
         return ;
     }
 
@@ -39,6 +46,10 @@ const createFile = function ()
 
         const viewDir = path.join(cwd, `view/${names[0]}`);
         if (!fs.existsSync(viewDir)) {
+
+            console.log(`${chalk.green(`Create a new Directory ${viewDir}.`)}`);
+            console.log();
+
             fs.ensureDirSync(viewDir);
         }
 
@@ -56,6 +67,10 @@ const createFile = function ()
         // create View file
         const viewFile = path.join(viewDir, `${name}View.js`);
         if (!fs.existsSync(viewFile)) {
+
+            console.log(`Create a new View Class ${viewFile}.`);
+            console.log();
+
             fs.writeFileSync(viewFile, `/**
  * @class
  * @extends {next2d.fw.View}
@@ -76,6 +91,10 @@ export class ${name}View extends next2d.fw.View
         // create ViewModel file
         const viewModelFile = path.join(viewDir, `${name}ViewModel.js`);
         if (!fs.existsSync(viewModelFile)) {
+
+            console.log(`Create a new ViewModel Class ${viewModelFile}.`);
+            console.log();
+
             fs.writeFileSync(viewModelFile, `/**
  * @class
  * @extends {next2d.fw.ViewModel}
@@ -104,6 +123,9 @@ export class ${name}ViewModel extends next2d.fw.ViewModel
 }`);
         }
     }
+
+    console.log(`${chalk.green("Finished.")}`);
+    console.log();
 };
 
 /**

@@ -1,24 +1,24 @@
 {
-  "name": "next2d-view-generator",
-  "version": "1.0.0",
+  "name": "@next2d/view-generator",
+  "version": "1.1.0",
   "description": "Generate the View class required for routing.",
   "author": "Toshiyuki Ienaga<ienaga@tvon.jp>",
   "license": "MIT",
   "homepage": "https://next2d.app",
-  "bugs": "https://github.com/Next2D/next2d-view-generator/issues",
+  "bugs": "https://github.com/Next2D/view-generator/issues",
   "keywords": [
     "Next2D",
-    "next2d-view-generator"
+    "view-generator"
   ],
   "scripts": {
     "lint": "eslint index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Next2D/next2d-view-generator.git"
+    "url": "git+https://github.com/Next2D/view-generator.git"
   },
   "bin": {
-    "next2d-view-generator": "index.js"
+    "@next2d/view-generator": "index.js"
   },
   "dependencies": {
     "chalk": "4.1.0",
