@@ -12,3 +12,6 @@ Generate the View class required for routing.
 ```sh
 npx @next2d/view-generator
 ```
+
+## License
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE](LICENSE) file for details.
