@@ -113,8 +113,8 @@ export class ${name}ViewModel extends next2d.fw.ViewModel
 
     /**
      * @param  {next2d.fw.View} view
-     * @return {void}
-     * @abstract
+     * @return {Promise|void}
+     * @public
      */
     bind (view)
     {
