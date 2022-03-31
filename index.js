@@ -118,7 +118,7 @@ export class ${name}ViewModel extends next2d.fw.ViewModel
      */
     bind (view)
     {
-        console.log(view);
+        return this.factory();
     }
 }`);
         }
