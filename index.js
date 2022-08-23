@@ -13,10 +13,10 @@ if (10 > version.split(".")[0]) {
 }
 
 const chalk       = require("chalk");
-const commander   = require("commander");
+const { Command } = require("commander");
 const packageJson = require("./package.json");
 const path        = require("path");
-const fs = require("fs-extra");
+const fs          = require("fs-extra");
 
 /**
  * @return {void}
@@ -137,23 +137,10 @@ export class ${name}ViewModel extends next2d.fw.ViewModel
  */
 const exec = function ()
 {
-    new commander.Command(packageJson.name)
+    new Command()
+        .name(packageJson.name)
+        .description("Generate the View, ViewModel class required for routing.")
         .version(packageJson.version)
-        .arguments("<project-directory>")
-        .usage(`${chalk.green("<project-directory>")} [options]`)
-        .on("--help", () =>
-        {
-            console.log();
-            console.log(
-                "    If you have any problems, do not hesitate to file an issue:"
-            );
-            console.log(
-                `      ${chalk.cyan(
-                    "https://github.com/Next2D/next2d-view-generator/issues/new"
-                )}`
-            );
-            console.log();
-        })
         .parse(process.argv);
 
     createFile();
