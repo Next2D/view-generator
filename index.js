@@ -44,6 +44,10 @@ const createFile = function ()
 
         const names = keys[idx].split(/[-_/]/);
 
+        if (names[0].charAt(0) === "@") {
+            continue;
+        }
+
         const viewDir = path.join(cwd, `view/${names[0]}`);
         if (!fs.existsSync(viewDir)) {
 
