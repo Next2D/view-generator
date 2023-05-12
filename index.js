@@ -104,17 +104,7 @@ export class ${name}View extends next2d.fw.View
  * @extends {next2d.fw.ViewModel}
  */
 export class ${name}ViewModel extends next2d.fw.ViewModel
-{
-    /**
-     * @param {next2d.fw.View} view
-     * @constructor
-     * @public
-     */
-    constructor (view)
-    {
-        super(view);
-    }
-    
+{    
     /**
      * @param  {next2d.fw.View} view
      * @return {void}
