@@ -42,7 +42,7 @@ const createFile = function ()
 
     for (let idx = 0; idx < keys.length; ++idx) {
 
-        const names = keys[idx].split(/[-_/]/);
+        const names = keys[idx].split("-");
 
         if (names[0].charAt(0) === "@") {
             continue;
@@ -114,15 +114,32 @@ export class ${name}ViewModel extends next2d.fw.ViewModel
     {
         super(view);
     }
+    
+    /**
+     * @param  {next2d.fw.View} view
+     * @return {void}
+     * @method
+     * @public
+     */
+    unbind (view)
+    {
+        console.log(view);
+    }
 
     /**
      * @param  {next2d.fw.View} view
-     * @return {Promise|void}
+     * @return {Promise}
+     * @method
      * @public
      */
     bind (view)
     {
-        return this.factory();
+        return this
+            .factory()
+            .then(() => 
+            {
+                console.log(view);
+            });
     }
 }`);
         }
