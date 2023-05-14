@@ -3,10 +3,10 @@
 "use strict";
 
 const version = process.versions.node;
-if (10 > version.split(".")[0]) {
+if (15 > version.split(".")[0]) {
     console.error(
         "You are running Node Version:" + version + ".\n" +
-        "Create Next2d App requires Node 10 or higher. \n" +
+        "View Generator requires Node 14 or higher. \n" +
         "Please update your version of Node."
     );
     process.exit(1);
