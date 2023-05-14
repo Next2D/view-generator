@@ -125,8 +125,8 @@ export class ${name}ViewModel extends next2d.fw.ViewModel
     bind (view)
     {
         return this
-            .factory()
-            .then(() => 
+            .factory(view)
+            .then((view) => 
             {
                 console.log(view);
             });
