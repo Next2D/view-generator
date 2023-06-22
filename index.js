@@ -75,11 +75,13 @@ const createFile = function ()
             console.log(`Create a new View Class ${viewFile}.`);
             console.log();
 
-            fs.writeFileSync(viewFile, `/**
+            fs.writeFileSync(viewFile, `import { View } from "@next2d/framework";
+
+/**
  * @class
- * @extends {next2d.fw.View}
+ * @extends {View}
  */
-export class ${name}View extends next2d.fw.View
+export class ${name}View extends View
 {
     /**
      * @constructor
@@ -99,14 +101,16 @@ export class ${name}View extends next2d.fw.View
             console.log(`Create a new ViewModel Class ${viewModelFile}.`);
             console.log();
 
-            fs.writeFileSync(viewModelFile, `/**
+            fs.writeFileSync(viewModelFile, `import { ViewModel } from "@next2d/framework";
+
+/**
  * @class
- * @extends {next2d.fw.ViewModel}
+ * @extends {ViewModel}
  */
-export class ${name}ViewModel extends next2d.fw.ViewModel
+export class ${name}ViewModel extends ViewModel
 {    
     /**
-     * @param  {next2d.fw.View} view
+     * @param  {View} view
      * @return {void}
      * @method
      * @public
@@ -117,7 +121,7 @@ export class ${name}ViewModel extends next2d.fw.ViewModel
     }
 
     /**
-     * @param  {next2d.fw.View} view
+     * @param  {View} view
      * @return {Promise}
      * @method
      * @public
