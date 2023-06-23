@@ -132,7 +132,7 @@ export class ${name}ViewModel extends ViewModel
             .factory(view)
             .then((view) => 
             {
-                console.log(view);
+                return Promise.resolve(view);
             });
     }
 }`);
