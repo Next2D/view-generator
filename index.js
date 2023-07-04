@@ -108,7 +108,7 @@ export class ${name}View extends View
  * @extends {ViewModel}
  */
 export class ${name}ViewModel extends ViewModel
-{    
+{
     /**
      * @param  {View} view
      * @return {void}
@@ -233,7 +233,7 @@ export class ${name}View extends View
  * @extends {ViewModel}
  */
 export class ${name}ViewModel extends ViewModel
-{    
+{
     /**
      * @param  {View} view
      * @return {void}
