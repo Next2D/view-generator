@@ -194,7 +194,7 @@ const createTypeScriptFile = function ()
         }
 
         // create View file
-        const viewFile = path.join(viewDir, `${name}View.js`);
+        const viewFile = path.join(viewDir, `${name}View.ts`);
         if (!fs.existsSync(viewFile)) {
 
             console.log(`Create a new View Class ${viewFile}.`);
@@ -220,7 +220,7 @@ export class ${name}View extends View
         }
 
         // create ViewModel file
-        const viewModelFile = path.join(viewDir, `${name}ViewModel.js`);
+        const viewModelFile = path.join(viewDir, `${name}ViewModel.ts`);
         if (!fs.existsSync(viewModelFile)) {
 
             console.log(`Create a new ViewModel Class ${viewModelFile}.`);
