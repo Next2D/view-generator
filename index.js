@@ -279,7 +279,7 @@ const exec = function ()
         .version(packageJson.version)
         .parse(process.argv);
 
-    if (!fs.existsSync(`${process.cwd()}/src/index.ts`)) {
+    if (fs.existsSync(`${process.cwd()}/src/index.ts`)) {
         createTypeScriptFile();
     } else {
         createJavaScriptFile();
