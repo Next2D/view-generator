@@ -42,7 +42,7 @@ const createJavaScriptFile = function ()
 
     for (let idx = 0; idx < keys.length; ++idx) {
 
-        const names = keys[idx].split("-");
+        const names = keys[idx].split(/-|\//);
 
         if (names[0].charAt(0) === "@") {
             continue;
@@ -167,7 +167,7 @@ const createTypeScriptFile = function ()
 
     for (let idx = 0; idx < keys.length; ++idx) {
 
-        const names = keys[idx].split("-");
+        const names = keys[idx].split(/-|\//);
 
         if (names[0].charAt(0) === "@") {
             continue;
