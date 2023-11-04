@@ -1,9 +1,12 @@
 {
   "name": "@next2d/view-generator",
-  "version": "1.5.3",
+  "version": "2.0.0",
   "description": "Generate the View class required for routing.",
-  "author": "Toshiyuki Ienaga<ienaga@tvon.jp>",
+  "author": "Toshiyuki Ienaga<ienaga@next2d.app>",
   "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
   "homepage": "https://next2d.app",
   "bugs": "https://github.com/Next2D/view-generator/issues",
   "keywords": [
@@ -11,21 +14,27 @@
     "view-generator"
   ],
   "scripts": {
-    "lint": "eslint index.js"
+    "lint": "eslint src/index.ts",
+    "publish": "tsc"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Next2D/view-generator.git"
   },
   "bin": {
-    "@next2d/view-generator": "index.js"
+    "@next2d/view-generator": "dist/index.js"
   },
   "devDependencies": {
-    "eslint": "^8.22.0"
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "eslint": "^8.22.0",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
-    "chalk": "4.1.2",
-    "commander": "^9.4.0",
-    "fs-extra": "^10.1.0"
+    "@types/node": "^20.8.10",
+    "picocolors": "^1.0.0"
   }
 }
