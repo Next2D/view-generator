@@ -1,5 +1,4 @@
 .github
-node_modules
 .eslintignore
 .eslintrc.json
 .gitattributes
