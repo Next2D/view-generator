@@ -169,7 +169,7 @@ export class ${name}ViewModel extends ViewModel
     {
         return this
             .factory(view)
-            .then((view): Promise<View> =>
+            .then((view: View): Promise<View> =>
             {
                 return Promise.resolve(view);
             });
