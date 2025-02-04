@@ -1,6 +1,4 @@
 .github
-.eslintignore
-.eslintrc.json
 .gitattributes
 .gitignore
 src

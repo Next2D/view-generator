@@ -78,29 +78,24 @@ export class ${name}ViewModel extends ViewModel
 {
     /**
      * @param  {View} view
-     * @return {void}
+     * @return {Promise<View>}
      * @method
      * @public
      */
-    unbind (view)
+    async unbind (view)
     {
-        console.log(view);
+        return await super.unbind(view);
     }
 
     /**
      * @param  {View} view
-     * @return {Promise}
+     * @return {Promise<void>}
      * @method
      * @public
      */
-    bind (view)
+    async bind (view)
     {
-        return this
-            .factory(view)
-            .then((view) =>
-            {
-                return Promise.resolve(view);
-            });
+        await super.bind(view);
     }
 }`;
 };
@@ -150,29 +145,24 @@ export class ${name}ViewModel extends ViewModel
 {
     /**
      * @param  {View} view
-     * @return {void}
+     * @return {Promise<View>}
      * @method
      * @public
      */
-    unbind (view: View): void
+    async unbind (view: View): Promise<View>
     {
-        console.log(view);
+        return await super.unbind(view);
     }
 
     /**
      * @param  {View} view
-     * @return {Promise}
+     * @return {Promise<void>}
      * @method
      * @public
      */
-    bind (view: View): Promise<View>
+    async bind (view: View): Promise<void>
     {
-        return this
-            .factory(view)
-            .then((view: View): Promise<View> =>
-            {
-                return Promise.resolve(view);
-            });
+        await super.bind(view);
     }
 }`;
 };
