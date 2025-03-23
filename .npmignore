@@ -1,6 +1,6 @@
 .github
-.eslintignore
-.eslintrc.json
 .gitattributes
 .gitignore
 src
+eslint.config.mjs
+tsconfig.json
