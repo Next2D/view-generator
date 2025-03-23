@@ -1,6 +1,6 @@
 {
   "name": "@next2d/view-generator",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Generate the View class required for routing.",
   "author": "Toshiyuki Ienaga<ienaga@next2d.app>",
   "license": "MIT",
@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "lint": "eslint src/index.ts",
-    "publish": "tsc"
+    "release": "tsc"
   },
   "files": [
     "dist"
