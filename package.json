@@ -1,6 +1,6 @@
 {
   "name": "@next2d/view-generator",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Generate the View class required for routing.",
   "author": "Toshiyuki Ienaga<ienaga@next2d.app>",
   "license": "MIT",
