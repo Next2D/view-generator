@@ -50,12 +50,47 @@ const createViewFileForJavaScript = (name: string): string =>
 export class ${name}View extends View
 {
     /**
+     * @param {${name}ViewModel} vm
      * @constructor
      * @public
      */
-    constructor ()
+    constructor (vm)
     {
         super();
+        this.vm = vm;
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @override
+     * @public
+     */
+    async initialize ()
+    {
+        return void 0;
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @override
+     * @public
+     */
+    async onEnter ()
+    {
+        return void 0;
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @override
+     * @public
+     */
+    async onExit ()
+    {
+        return void 0;
     }
 }`;
 };
@@ -76,27 +111,6 @@ const createViewModelFileForJavaScript = (name: string): string =>
  */
 export class ${name}ViewModel extends ViewModel
 {
-    /**
-     * @param  {View} view
-     * @return {Promise<View>}
-     * @method
-     * @public
-     */
-    async unbind (view)
-    {
-        return await super.unbind(view);
-    }
-
-    /**
-     * @param  {View} view
-     * @return {Promise<void>}
-     * @method
-     * @public
-     */
-    async bind (view)
-    {
-        await super.bind(view);
-    }
 }`;
 };
 
@@ -109,6 +123,7 @@ export class ${name}ViewModel extends ViewModel
 const createViewFileForTypeScript = (name: string): string =>
 {
     return `import { View } from "@next2d/framework";
+import type { ${name}ViewModel } from "./${name}ViewModel";
 
 /**
  * @class
@@ -117,12 +132,47 @@ const createViewFileForTypeScript = (name: string): string =>
 export class ${name}View extends View
 {
     /**
+     * @param {${name}ViewModel} vm
      * @constructor
      * @public
      */
-    constructor ()
-    {
+    constructor (
+        private readonly vm: ${name}ViewModel
+    ) {
         super();
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @override
+     * @public
+     */
+    async initialize (): Promise<void>
+    {
+        return void 0;
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @override
+     * @public
+     */
+    async onEnter (): Promise<void>
+    {
+        return void 0;
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @override
+     * @public
+     */
+    async onExit (): Promise<void>
+    {
+        return void 0;
     }
 }`;
 };
@@ -135,7 +185,7 @@ export class ${name}View extends View
  */
 const createViewModelFileForTypeScript = (name: string): string =>
 {
-    return `import { View, ViewModel } from "@next2d/framework";
+    return `import { ViewModel } from "@next2d/framework";
 
 /**
  * @class
@@ -143,27 +193,6 @@ const createViewModelFileForTypeScript = (name: string): string =>
  */
 export class ${name}ViewModel extends ViewModel
 {
-    /**
-     * @param  {View} view
-     * @return {Promise<View>}
-     * @method
-     * @public
-     */
-    async unbind (view: View): Promise<View>
-    {
-        return await super.unbind(view);
-    }
-
-    /**
-     * @param  {View} view
-     * @return {Promise<void>}
-     * @method
-     * @public
-     */
-    async bind (view: View): Promise<void>
-    {
-        await super.bind(view);
-    }
 }`;
 };
 
@@ -199,7 +228,7 @@ const execute = (): void =>
     const keys: string[] = Object.keys(routing);
     for (let idx: number = 0; idx < keys.length; ++idx) {
 
-        const names: string[] = keys[idx].split(/-|\//);
+        const names: string[] = keys[idx].split(/-|\/|_/);
 
         if (names[0].charAt(0) === "@") {
             continue;
