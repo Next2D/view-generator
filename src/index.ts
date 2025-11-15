@@ -111,6 +111,16 @@ const createViewModelFileForJavaScript = (name: string): string =>
  */
 export class ${name}ViewModel extends ViewModel
 {
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @override
+     * @public
+     */
+    async initialize ()
+    {
+        return void 0;
+    }
 }`;
 };
 
@@ -122,8 +132,8 @@ export class ${name}ViewModel extends ViewModel
  */
 const createViewFileForTypeScript = (name: string): string =>
 {
-    return `import { View } from "@next2d/framework";
-import type { ${name}ViewModel } from "./${name}ViewModel";
+    return `import type { ${name}ViewModel } from "./${name}ViewModel";
+import { View } from "@next2d/framework";
 
 /**
  * @class
@@ -193,6 +203,16 @@ const createViewModelFileForTypeScript = (name: string): string =>
  */
 export class ${name}ViewModel extends ViewModel
 {
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @override
+     * @public
+     */
+    async initialize (): Promise<void>
+    {
+        return void 0;
+    }
 }`;
 };
 
