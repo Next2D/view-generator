@@ -6,7 +6,7 @@ import pc from "picocolors";
 import path from "path";
 import fs from "fs";
 
-const recommendeVersion: number = 18;
+const recommendeVersion: number = 22;
 const version: string = process.versions.node;
 if (recommendeVersion > parseInt(version.split(".")[0])) {
     pc.red(`You are running Node Version:${version}.
