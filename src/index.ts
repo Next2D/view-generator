@@ -56,14 +56,12 @@ export class ${name}View extends View
      */
     constructor (vm)
     {
-        super();
-        this.vm = vm;
+        super(vm);
     }
 
     /**
      * @return {Promise<void>}
      * @method
-     * @override
      * @public
      */
     async initialize ()
@@ -74,7 +72,6 @@ export class ${name}View extends View
     /**
      * @return {Promise<void>}
      * @method
-     * @override
      * @public
      */
     async onEnter ()
@@ -85,7 +82,6 @@ export class ${name}View extends View
     /**
      * @return {Promise<void>}
      * @method
-     * @override
      * @public
      */
     async onExit ()
@@ -139,23 +135,21 @@ import { View } from "@next2d/framework";
  * @class
  * @extends {View}
  */
-export class ${name}View extends View
+export class ${name}View extends View<${name}ViewModel>
 {
     /**
      * @param {${name}ViewModel} vm
      * @constructor
      * @public
      */
-    constructor (
-        private readonly vm: ${name}ViewModel
-    ) {
-        super();
+    constructor (vm: ${name}ViewModel)
+    {
+        super(vm);
     }
 
     /**
      * @return {Promise<void>}
      * @method
-     * @override
      * @public
      */
     async initialize (): Promise<void>
@@ -166,7 +160,6 @@ export class ${name}View extends View
     /**
      * @return {Promise<void>}
      * @method
-     * @override
      * @public
      */
     async onEnter (): Promise<void>
@@ -177,7 +170,6 @@ export class ${name}View extends View
     /**
      * @return {Promise<void>}
      * @method
-     * @override
      * @public
      */
     async onExit (): Promise<void>
@@ -206,7 +198,6 @@ export class ${name}ViewModel extends ViewModel
     /**
      * @return {Promise<void>}
      * @method
-     * @override
      * @public
      */
     async initialize (): Promise<void>
