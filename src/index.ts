@@ -6,7 +6,7 @@ import pc from "picocolors";
 import path from "path";
 import fs from "fs";
 
-const recommendeVersion: number = 18;
+const recommendeVersion: number = 22;
 const version: string = process.versions.node;
 if (recommendeVersion > parseInt(version.split(".")[0])) {
     pc.red(`You are running Node Version:${version}.
@@ -50,12 +50,43 @@ const createViewFileForJavaScript = (name: string): string =>
 export class ${name}View extends View
 {
     /**
+     * @param {${name}ViewModel} vm
      * @constructor
      * @public
      */
-    constructor ()
+    constructor (vm)
     {
-        super();
+        super(vm);
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @public
+     */
+    async initialize ()
+    {
+        return void 0;
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @public
+     */
+    async onEnter ()
+    {
+        return void 0;
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @public
+     */
+    async onExit ()
+    {
+        return void 0;
     }
 }`;
 };
@@ -77,25 +108,14 @@ const createViewModelFileForJavaScript = (name: string): string =>
 export class ${name}ViewModel extends ViewModel
 {
     /**
-     * @param  {View} view
-     * @return {Promise<View>}
-     * @method
-     * @public
-     */
-    async unbind (view)
-    {
-        return await super.unbind(view);
-    }
-
-    /**
-     * @param  {View} view
      * @return {Promise<void>}
      * @method
+     * @override
      * @public
      */
-    async bind (view)
+    async initialize ()
     {
-        await super.bind(view);
+        return void 0;
     }
 }`;
 };
@@ -108,21 +128,53 @@ export class ${name}ViewModel extends ViewModel
  */
 const createViewFileForTypeScript = (name: string): string =>
 {
-    return `import { View } from "@next2d/framework";
+    return `import type { ${name}ViewModel } from "./${name}ViewModel";
+import { View } from "@next2d/framework";
 
 /**
  * @class
  * @extends {View}
  */
-export class ${name}View extends View
+export class ${name}View extends View<${name}ViewModel>
 {
     /**
+     * @param {${name}ViewModel} vm
      * @constructor
      * @public
      */
-    constructor ()
+    constructor (vm: ${name}ViewModel)
     {
-        super();
+        super(vm);
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @public
+     */
+    async initialize (): Promise<void>
+    {
+        return void 0;
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @public
+     */
+    async onEnter (): Promise<void>
+    {
+        return void 0;
+    }
+
+    /**
+     * @return {Promise<void>}
+     * @method
+     * @public
+     */
+    async onExit (): Promise<void>
+    {
+        return void 0;
     }
 }`;
 };
@@ -135,7 +187,7 @@ export class ${name}View extends View
  */
 const createViewModelFileForTypeScript = (name: string): string =>
 {
-    return `import { View, ViewModel } from "@next2d/framework";
+    return `import { ViewModel } from "@next2d/framework";
 
 /**
  * @class
@@ -144,25 +196,13 @@ const createViewModelFileForTypeScript = (name: string): string =>
 export class ${name}ViewModel extends ViewModel
 {
     /**
-     * @param  {View} view
-     * @return {Promise<View>}
-     * @method
-     * @public
-     */
-    async unbind (view: View): Promise<View>
-    {
-        return await super.unbind(view);
-    }
-
-    /**
-     * @param  {View} view
      * @return {Promise<void>}
      * @method
      * @public
      */
-    async bind (view: View): Promise<void>
+    async initialize (): Promise<void>
     {
-        await super.bind(view);
+        return void 0;
     }
 }`;
 };
@@ -199,7 +239,7 @@ const execute = (): void =>
     const keys: string[] = Object.keys(routing);
     for (let idx: number = 0; idx < keys.length; ++idx) {
 
-        const names: string[] = keys[idx].split(/-|\//);
+        const names: string[] = keys[idx].split(/-|\/|_/);
 
         if (names[0].charAt(0) === "@") {
             continue;
