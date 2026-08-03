@@ -2,9 +2,20 @@
 
 "use strict";
 
-import pc from "picocolors";
 import path from "path";
 import fs from "fs";
+
+const colorEnabled: boolean =
+    typeof process !== "undefined"
+    && Boolean(process.stdout && process.stdout.isTTY)
+    && !process.env.NO_COLOR;
+
+const pc = {
+    "red": (text: string): string =>
+        colorEnabled ? `\x1b[31m${text}\x1b[39m` : text,
+    "green": (text: string): string =>
+        colorEnabled ? `\x1b[32m${text}\x1b[39m` : text
+};
 
 const recommendeVersion: number = 22;
 const version: string = process.versions.node;
